@@ -1,0 +1,1 @@
+alter table public."User" enable row level security;

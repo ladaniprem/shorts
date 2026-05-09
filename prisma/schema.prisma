@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  userId    String   @id
+  name      String?
+  email     String   @unique
+  createdAt DateTime @default(now())
+  videos    Video[]
+  credits   Int      @default(1)
+}
+
+model Video {
+  videoId      String   @id
+  createdAt    DateTime @default(now())
+  prompt       String
+  processing   Boolean
+  failed       Boolean? @default(false)
+  content      String?
+  imagePrompts String[]
+  imageLinks   String[]
+  audio        String?
+  voiceId      String?
+  videoUrl     String?
+  caption      Json?
+  duration     Int?
+  thumbnail    String?
+  title        String?
+  captionStyle String @default("classic")
+  suggestedTitles String[] @default([])
+  publishDate  DateTime?
+  isLongToShort Boolean @default(false)
+  sourceUrl     String?
+  startTime     String?
+  endTime       String?
+  userId       String
+  user         User     @relation(fields: [userId], references: [userId])
+}
