@@ -117,7 +117,7 @@ export function Footer() {
               </li>
               <li>
                 <button
-                  onClick={() => setContactOpen(true)}
+                  onClick={() => { setContactOpen(true); }}
                   className="hover:text-white transition-colors cursor-pointer"
                   suppressHydrationWarning
                 >
@@ -144,7 +144,7 @@ export function Footer() {
 
       <ContactModal
         isOpen={contactOpen}
-        onClose={() => setContactOpen(false)}
+        onClose={() => { setContactOpen(false); }}
         defaultSubject="General inquiry"
       />
     </footer>

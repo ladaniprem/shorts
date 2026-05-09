@@ -105,7 +105,7 @@ const page = async ({ params }: {
                                                         <div 
                                                             key={idx} 
                                                             onClick={() => {
-                                                                navigator.clipboard.writeText(alt);
+                                                                void navigator.clipboard.writeText(alt);
                                                                 toast.success("Title copied!");
                                                             }}
                                                             className="group flex items-center gap-3 p-3 rounded-xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.07] hover:border-violet-500/30 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-[0.98]"

@@ -61,7 +61,7 @@ export const generateCaptions = async (videoId: string) => {
             });
 
             if (transcription.words && transcription.words.length > 0) {
-                const captions = transcription.words.map((w: any) => ({
+                const captions = transcription.words.map((w: unknown) => ({
                     text: w.word,
                     startFrame: Math.floor(w.start * FPS),
                     endFrame:   Math.floor(w.end   * FPS),
@@ -71,7 +71,7 @@ export const generateCaptions = async (videoId: string) => {
                 console.log(`[captions] ✓ ${captions.length} accurate captions via Groq Whisper.`);
                 return;
             }
-        } catch (err: any) {
+        } catch (err: unknown) {
             const code = err?.error?.error?.code ?? err?.code ?? "";
             if (code === "organization_restricted") {
                 console.warn("[captions] Groq account restricted — falling back to estimation.");

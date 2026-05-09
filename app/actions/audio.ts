@@ -4,19 +4,19 @@ import 'dotenv/config';
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3"
 
 const getBucketName = () =>
-    process.env.AWS_S3_BUCKET_NAME ||
-    process.env.AWS_BUCKET_NAME ||
-    process.env.S3_BUCKET_NAME ||
+    (process.env.AWS_S3_BUCKET_NAME ??
+    (process.env.AWS_BUCKET_NAME ??
+    process.env.S3_BUCKET_NAME ??
     "";
 
 let s3ClientInstance: S3Client | null = null;
 const getS3Client = () => {
     if (!s3ClientInstance) {
         s3ClientInstance = new S3Client({
-            region: process.env.AWS_REGION || "",
+            region: process.env.AWS_REGION ?? "",
             credentials: {
-                accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || ""
+                accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? "",
+                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? ""
             }
         });
     }
@@ -362,7 +362,7 @@ export const generateAudio = async (videoId: string) => {
             where: { videoId: videoId }
         });
 
-        if (!video || !video.content) {
+        if (!video?.content) {
             console.error('Video or content not found for videoId:', videoId);
             return undefined;
         }

@@ -21,7 +21,7 @@ export const VideoActions = ({ videoId, videoUrl, isOwner }: videoActionsPrompt)
     const { handleDownload, handleCopyLink, handleDelete, isDeleting, copied } = useVideoActions({
         videoId,
         videoUrl,
-        onDeleteSuccess: () => router.push('/dashboard')
+        onDeleteSuccess: () => { router.push('/dashboard'); }
     })
 
     const [isGeneratingTitles, setIsGeneratingTitles] = useState(false)

@@ -98,7 +98,7 @@ export function ContactModal({ isOpen, onClose, defaultSubject = "" }: ContactMo
                     type="text"
                     required
                     value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
+                    onChange={(e) => { setForm({ ...form, name: e.target.value }); }}
                     className="w-full bg-black border border-white/10 text-white text-sm px-3 py-2.5 outline-none focus:border-emerald-500/50 transition-colors placeholder-neutral-700"
                     placeholder="Your name"
                   />
@@ -111,7 +111,7 @@ export function ContactModal({ isOpen, onClose, defaultSubject = "" }: ContactMo
                     type="email"
                     required
                     value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    onChange={(e) => { setForm({ ...form, email: e.target.value }); }}
                     className="w-full bg-black border border-white/10 text-white text-sm px-3 py-2.5 outline-none focus:border-emerald-500/50 transition-colors placeholder-neutral-700"
                     placeholder="you@company.com"
                   />
@@ -126,7 +126,7 @@ export function ContactModal({ isOpen, onClose, defaultSubject = "" }: ContactMo
                   type="text"
                   required
                   value={form.subject}
-                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  onChange={(e) => { setForm({ ...form, subject: e.target.value }); }}
                   className="w-full bg-black border border-white/10 text-white text-sm px-3 py-2.5 outline-none focus:border-emerald-500/50 transition-colors placeholder-neutral-700"
                   placeholder="Enterprise plan inquiry"
                 />
@@ -140,7 +140,7 @@ export function ContactModal({ isOpen, onClose, defaultSubject = "" }: ContactMo
                   required
                   rows={5}
                   value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  onChange={(e) => { setForm({ ...form, message: e.target.value }); }}
                   className="w-full bg-black border border-white/10 text-white text-sm px-3 py-2.5 outline-none focus:border-emerald-500/50 transition-colors placeholder-neutral-700 resize-none"
                   placeholder="Tell us about your use case..."
                 />

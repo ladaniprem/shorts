@@ -55,7 +55,7 @@ export const useVideoActions = ({ videoId, videoUrl, onDeleteSuccess }: UseVideo
         try {
             await navigator.clipboard.writeText(`${window.location.origin}/videos/${videoId}`)
             setCopied(true)
-            setTimeout(() => setCopied(false), 2000)
+            setTimeout(() => { setCopied(false); }, 2000)
 
             toast.success("Link copied", {
                 description: "Video Link has been copied to your clipboard"

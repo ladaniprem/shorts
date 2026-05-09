@@ -3,19 +3,19 @@ import { randomUUID } from "crypto";
 import { prisma } from "@/lib/prisma";
 
 const getBucketName = () =>
-    process.env.AWS_S3_BUCKET_NAME ||
-    process.env.AWS_BUCKET_NAME ||
-    process.env.S3_BUCKET_NAME ||
+    (process.env.AWS_S3_BUCKET_NAME ??
+    (process.env.AWS_BUCKET_NAME ??
+    process.env.S3_BUCKET_NAME ??
     "";
 
 let s3ClientInstance: S3Client | null = null;
 const getS3Client = () => {
     if (!s3ClientInstance) {
         s3ClientInstance = new S3Client({
-            region: process.env.AWS_REGION || "",
+            region: process.env.AWS_REGION ?? "",
             credentials: {
-                accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+                accessKeyId: process.env.AWS_ACCESS_KEY_ID ?? "",
+                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY ?? "",
             },
         });
     }
@@ -107,7 +107,7 @@ const fetchViaSiliconFlow = async (
     }
 
     const data = await response.json() as { images?: { url?: string }[] };
-    const imageUrl = data?.images?.[0]?.url;
+    const imageUrl = data.images?.[0]?.url;
 
     if (!imageUrl) {
         throw new Error(`SiliconFlow returned no image URL for model ${model}`);
@@ -200,7 +200,7 @@ export const processImage = async (prompt: string): Promise<string> => {
         const s3Url = await uploadToS3(buffer, "image/png");
         console.log(`[nvidia] ✓ Uploaded: ${s3Url}`);
         return s3Url;
-    } catch (err: any) {
+    } catch (err: unknown) {
         console.warn(`[nvidia] Failed: ${err.message}. Falling back to SiliconFlow...`);
     }
 

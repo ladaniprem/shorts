@@ -153,7 +153,7 @@ const CreateProject = ({ user, credits }: { user: string | null; credits: number
                 return (
                   <button
                     key={`${voice.id}-${voice.language}`}
-                    onClick={() => setSelectedVoice(voice)}
+                    onClick={() => { setSelectedVoice(voice); }}
                     className={`flex flex-col items-center gap-1 px-6 py-3 rounded-2xl border transition-all duration-200 cursor-pointer min-w-[120px] ${
                       isSelected
                         ? "border-purple-500 bg-purple-600/20 shadow-[0_0_16px_rgba(168,85,247,0.35)] text-white"
@@ -176,12 +176,12 @@ const CreateProject = ({ user, credits }: { user: string | null; credits: number
             />
             <PlaceholdersAndVanishInput
               placeholders={placeholders}
-              onChange={(e) => setPrompt(e.target.value)}
+              onChange={(e) => { setPrompt(e.target.value); }}
               onSubmit={(e) => {
                 e.preventDefault()
-                if (!user) return setShowLoginDialog(true)
-                if (credits < 1) return setShowCreditsDialog(true)
-                handleCreateVideo()
+                if (!user) { setShowLoginDialog(true); return; }
+                if (credits < 1) { setShowCreditsDialog(true); return; }
+                void handleCreateVideo()
               }}
             />
           </div>

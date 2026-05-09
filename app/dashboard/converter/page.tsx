@@ -89,7 +89,7 @@ export default function ConverterPage() {
                   <input 
                     type="file" 
                     accept="video/*" 
-                    onChange={(e) => setFile(e.target.files?.[0] || null)}
+                    onChange={(e) => { setFile(e.target.files?.[0] || null); }}
                     className="absolute inset-0 opacity-0 cursor-pointer"
                   />
                   <div className="flex flex-col items-center gap-6">
@@ -117,7 +117,7 @@ export default function ConverterPage() {
                   <Button 
                     size="icon" 
                     variant="ghost" 
-                    onClick={() => setFile(null)}
+                    onClick={() => { setFile(null); }}
                     className="text-neutral-400 hover:text-white hover:bg-white/5 rounded-full size-12"
                   >
                     <X className="size-6" />
@@ -151,7 +151,7 @@ export default function ConverterPage() {
               {captionStyles.map((style) => (
                 <div
                   key={style.id}
-                  onClick={() => setSelectedStyle(style.id)}
+                  onClick={() => { setSelectedStyle(style.id); }}
                   className={`relative p-4 rounded-2xl border-2 transition-all cursor-pointer group hover:scale-[1.02] ${
                     selectedStyle === style.id
                       ? "border-purple-500 bg-purple-500/10 shadow-[0_0_20px_rgba(168,85,247,0.2)]"

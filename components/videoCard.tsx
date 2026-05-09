@@ -26,7 +26,7 @@ import { Clock, Play, Layers } from "lucide-react"
 export const VideoCard = ({ video }: { video: VideoCardVideo }) => {
     const { handleDownload, handleCopyLink, handleDelete, isDeleting } = useVideoActions({
         videoId: video.videoId,
-        videoUrl: video.videoUrl || null,
+        videoUrl: video.videoUrl ?? null,
         onDeleteSuccess: () => {}
     })
 
@@ -78,7 +78,7 @@ export const VideoCard = ({ video }: { video: VideoCardVideo }) => {
                 <div className="p-6 space-y-3">
                     <div className="space-y-1">
                         <h3 className="font-bold text-lg text-white leading-tight line-clamp-2 group-hover:text-violet-300 transition-colors">
-                            {video.title || video.prompt || "Untitled Short"}
+                            {(video.title ?? video.prompt) || "Untitled Short"}
                         </h3>
                         <div className="flex items-center gap-2 text-neutral-500">
                             <Clock className="size-3" />

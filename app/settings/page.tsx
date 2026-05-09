@@ -135,7 +135,7 @@ export default function SettingsPage() {
 
                 {!usage.isPro && (
                   <Button
-                    onClick={() => setShowUpgradeModal(true)}
+                    onClick={() => { setShowUpgradeModal(true); }}
                     className="bg-white text-black hover:bg-neutral-200 text-xs font-bold uppercase tracking-widest h-12 px-8 rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.1)]"
                   >
                     <Zap className="w-4 h-4 mr-2 fill-black" />
@@ -275,7 +275,7 @@ export default function SettingsPage() {
       
       <UpgradeModal
         isOpen={showUpgradeModal}
-        onClose={() => setShowUpgradeModal(false)}
+        onClose={() => { setShowUpgradeModal(false); }}
       />
     </div>
   );

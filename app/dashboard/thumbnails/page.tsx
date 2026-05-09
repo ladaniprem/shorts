@@ -39,9 +39,9 @@ export default function ThumbnailsPage() {
 
   const copyToClipboard = () => {
     if (generatedImage) {
-      navigator.clipboard.writeText(generatedImage)
+      void navigator.clipboard.writeText(generatedImage)
       setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      setTimeout(() => { setCopied(false); }, 2000)
       toast.success("Image URL copied to clipboard")
     }
   }
@@ -69,7 +69,7 @@ export default function ThumbnailsPage() {
               <Input
                 placeholder="e.g. A futuristic city at night with neon lights, 4k, cinematic..."
                 value={prompt}
-                onChange={(e) => setPrompt(e.target.value)}
+                onChange={(e) => { setPrompt(e.target.value); }}
                 className="bg-white/5 border-white/10 text-white placeholder:text-white/20 focus:border-purple-500/50"
               />
             </div>

@@ -68,7 +68,7 @@ export function SubstrateSection() {
               <MagneticButton>
                 <button 
                   className="shiny-cta" 
-                  style={{ "--gradient-shine": "#8b5cf6" } as any}
+                  style={{ "--gradient-shine": "#8b5cf6" } as unknown}
                   suppressHydrationWarning
                 >
                   <span>Explore Architecture</span>

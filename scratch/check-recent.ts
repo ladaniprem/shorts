@@ -17,4 +17,4 @@ async function check() {
   })))
 }
 
-check().then(() => process.exit(0))
+void check().then(() => process.exit(0))

@@ -14,4 +14,4 @@ async function checkQueue() {
   console.log('Jobs:', jobStates)
 }
 
-checkQueue().then(() => process.exit(0)).catch(e => { console.error(e); process.exit(1); })
+checkQueue().then(() => process.exit(0)).catch((e: unknown) => { console.error(e); process.exit(1); })

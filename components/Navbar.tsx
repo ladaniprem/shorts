@@ -70,7 +70,7 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            onClick={() => { setIsMobileMenuOpen(!isMobileMenuOpen); }}
             className="md:hidden flex items-center gap-2 text-[11px] font-medium text-white uppercase tracking-wider hover:opacity-70 transition-opacity z-50 bg-black/50 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/10"
           >
             {isMobileMenuOpen ? "Close" : "Menu"}
@@ -83,10 +83,10 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center p-6 animate-in fade-in slide-in-from-top-5 duration-200">
           <div className="flex flex-col items-center gap-6 w-full max-w-sm">
-            <Link href="#features" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">Features</Link>
-            <Link href="#how-it-works" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">How it Works</Link>
-            <Link href="#tech" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">Tech Stack</Link>
-            <Link href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">Pricing</Link>
+            <Link href="#features" onClick={() => { setIsMobileMenuOpen(false); }} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">Features</Link>
+            <Link href="#how-it-works" onClick={() => { setIsMobileMenuOpen(false); }} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">How it Works</Link>
+            <Link href="#tech" onClick={() => { setIsMobileMenuOpen(false); }} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">Tech Stack</Link>
+            <Link href="#pricing" onClick={() => { setIsMobileMenuOpen(false); }} className="text-lg font-medium text-neutral-300 hover:text-white transition-colors">Pricing</Link>
             <div className="w-full h-px bg-white/10 my-2" />
             {!isSignedIn ? (
               <SignInButton mode="redirect" forceRedirectUrl="/new">

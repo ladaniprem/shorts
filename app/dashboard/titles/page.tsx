@@ -32,10 +32,10 @@ export default function TitlesPage() {
   }
 
   const copyToClipboard = (text: string, index: number) => {
-    navigator.clipboard.writeText(text)
+    void navigator.clipboard.writeText(text)
     setCopiedIndex(index)
     toast.success("Copied to clipboard")
-    setTimeout(() => setCopiedIndex(null), 2000)
+    setTimeout(() => { setCopiedIndex(null); }, 2000)
   }
 
   return (
@@ -52,7 +52,7 @@ export default function TitlesPage() {
           <Input 
             placeholder="What is your video about?" 
             value={topic}
-            onChange={(e) => setTopic(e.target.value)}
+            onChange={(e) => { setTopic(e.target.value); }}
             className="bg-background border-border h-12 rounded-xl focus:ring-violet-500/20"
             onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
           />
@@ -79,7 +79,7 @@ export default function TitlesPage() {
             return (
               <div 
                 key={index}
-                onClick={() => copyToClipboard(title, index)}
+                onClick={() => { copyToClipboard(title, index); }}
                 style={{ animationDelay: `${index * 50}ms` }}
                 className="group relative flex items-center gap-4 p-5 rounded-3xl bg-accent/5 border border-border hover:bg-accent/10 hover:border-violet-500/30 transition-all duration-300 cursor-pointer hover:scale-[1.02] active:scale-[0.98] animate-in fade-in slide-in-from-bottom-4 fill-mode-both"
               >

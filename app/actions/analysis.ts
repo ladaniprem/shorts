@@ -13,8 +13,8 @@ export async function analyzeLongVideoAction(sourceUrl: string, userId: string, 
   
   if (!apiKey && !groqKey) throw new Error("Missing AI API Keys")
 
-  const ai = new GoogleGenAI({ apiKey: apiKey || "" })
-  const groq = new Groq({ apiKey: groqKey || "" })
+  const ai = new GoogleGenAI({ apiKey: apiKey ?? "" })
+  const groq = new Groq({ apiKey: groqKey ?? "" })
   
   const prompt = `Analyze this long video: ${sourceUrl}. 
   Your task is to identify 3 viral, stand-alone short segments (under 60 seconds each).
@@ -45,9 +45,9 @@ export async function analyzeLongVideoAction(sourceUrl: string, userId: string, 
   let lastError = null
 
   // Helper to prevent APIs from hanging the Server Action indefinitely
-  const fetchWithTimeout = async (url: string, options: any, timeoutMs = 8000) => {
+  const fetchWithTimeout = async (url: string, options: unknown, timeoutMs = 8000) => {
     const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeoutMs);
+    const id = setTimeout(() => { controller.abort(); }, timeoutMs);
     try {
       const response = await fetch(url, { ...options, signal: controller.signal });
       clearTimeout(id);

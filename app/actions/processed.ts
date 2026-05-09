@@ -132,7 +132,7 @@ export const processes = async (videoId: string) => {
             data: { processing: false }
         })
 
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error(`[worker] [${videoId}] FATAL ERROR:`, error.message)
         // Wrap in its own try-catch: if the DB is also down we must NOT throw a
         // second unhandled rejection — just log it and move on.

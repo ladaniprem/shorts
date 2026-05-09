@@ -70,7 +70,7 @@ export function PricingSection() {
         name: "Shorts AI",
         description: `Purchase ${credits} credits`,
         order_id: order.id,
-        handler: async function (response: any) {
+        handler: async function (response: unknown) {
           const result = await verifyRazorpayPayment(
             order.id,
             response.razorpay_payment_id,
@@ -108,7 +108,7 @@ export function PricingSection() {
         },
       };
 
-      const rzp = new (window as any).Razorpay(options);
+      const rzp = new (window as unknown).Razorpay(options);
       rzp.open();
     } catch (error) {
       console.error("Payment error:", error);

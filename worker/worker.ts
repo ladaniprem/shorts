@@ -12,7 +12,7 @@ const originalConsoleWarn = console.warn;
 console.error = function (...args) {
     if (args.some(arg => typeof arg === 'string' && arg.includes('ECONNRESET'))) return;
     if (args.some(arg => arg && arg.code === 'ECONNRESET')) return;
-    if (args.some(arg => arg && arg.message && arg.message.includes('ECONNRESET'))) return;
+    if (args.some(arg => arg?.message?.includes('ECONNRESET'))) return;
     originalConsoleError.apply(console, args);
 };
 
@@ -43,10 +43,10 @@ const connection = new Redis(REDIS_URL, {
 // SILENCE ECONNRESET SPAM PERMANENTLY
 if (typeof process !== 'undefined') {
     process.on('uncaughtException', (err) => {
-        if (err.message?.includes('ECONNRESET')) return;
+        if (err.message.includes('ECONNRESET')) return;
         console.error('Worker Uncaught Exception:', err);
     });
-    process.on('unhandledRejection', (reason: any) => {
+    process.on('unhandledRejection', (reason: unknown) => {
         if (reason?.message?.includes('ECONNRESET')) return;
         console.error('Worker Unhandled Rejection:', reason);
     });
@@ -88,7 +88,7 @@ cleanupStuckJobs().then(() => {
     try {
         await processes(videoId)
         console.log(`Successfully processed video: ${videoId}`)
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error(`Error processing video ${videoId}:`, error.message)
 
         await prisma.video.update({

@@ -222,7 +222,7 @@ No other keys. No extra fields. Raw JSON only.`
 
       } catch (err: unknown) {
         lastErr = err
-        const status = (err as { status?: number })?.status
+        const status = (err as { status?: number }).status
         console.error(`[${model}] Attempt ${attempt} failed (status ${status}):`, (err as Error)?.message ?? err)
 
         // Truly fatal errors (bad API key, bad request) — no point trying any other model
@@ -342,7 +342,7 @@ No other keys. No extra fields. Raw JSON only.`
         }
 
         const snData = await snRes.json() as { choices?: Array<{ message?: { content?: string } }> }
-        const raw = snData?.choices?.[0]?.message?.content ?? ""
+        const raw = snData.choices?.[0]?.message?.content ?? ""
         const cleaned = raw.replace(/^```json\s*/i, "").replace(/```\s*$/i, "").trim()
         const parsed = JSON.parse(cleaned) as { content?: unknown }
         if (!Array.isArray(parsed.content)) throw new Error("SambaNova response missing 'content' array")
@@ -397,7 +397,7 @@ No other keys. No extra fields. Raw JSON only.`
         }
 
         const orData = await orRes.json() as { choices?: Array<{ message?: { content?: string } }> }
-        const raw = orData?.choices?.[0]?.message?.content ?? ""
+        const raw = orData.choices?.[0]?.message?.content ?? ""
         const cleaned = raw.replace(/^```json\s*/i, "").replace(/```\s*$/i, "").trim()
         const parsed = JSON.parse(cleaned) as { content?: unknown }
         if (!Array.isArray(parsed.content)) throw new Error("OpenRouter response missing 'content' array")

@@ -20,7 +20,7 @@ export default function UserDropdown() {
       }
     };
     document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    return () => { document.removeEventListener("mousedown", handler); };
   }, []);
 
   if (!isLoaded || !user) return null;
@@ -29,7 +29,7 @@ export default function UserDropdown() {
     <div ref={ref} className="relative">
       {/* Avatar trigger */}
       <button 
-        onClick={() => setOpen(!open)}
+        onClick={() => { setOpen(!open); }}
         className="relative group transition-transform active:scale-95"
       >
         <div className="absolute -inset-0.5 bg-gradient-to-r from-white/10 to-white/5 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity" />

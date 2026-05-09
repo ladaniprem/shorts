@@ -12,7 +12,7 @@ export async function GET(
             where: { videoId }
         });
 
-        if (!video || !video.videoUrl) {
+        if (!video?.videoUrl) {
             return new NextResponse("Video not found", { status: 404 });
         }
 

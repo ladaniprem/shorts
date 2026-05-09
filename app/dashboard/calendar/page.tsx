@@ -14,8 +14,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 
 export default function CalendarPage() {
   const [date, setDate] = useState<Date | undefined>(new Date())
-  const [scheduledVideos, setScheduledVideos] = useState<any[]>([])
-  const [unscheduledVideos, setUnscheduledVideos] = useState<any[]>([])
+  const [scheduledVideos, setScheduledVideos] = useState<unknown[]>([])
+  const [unscheduledVideos, setUnscheduledVideos] = useState<unknown[]>([])
   const [loading, setLoading] = useState(false)
   const [selectedVideoId, setSelectedVideoId] = useState<string>("")
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -30,7 +30,7 @@ export default function CalendarPage() {
   }
 
   useEffect(() => {
-    fetchData()
+    void fetchData()
   }, [])
 
   const handleSchedule = async () => {
@@ -69,7 +69,7 @@ export default function CalendarPage() {
   }
 
   const videosOnSelectedDate = scheduledVideos.filter(v => 
-    v.publishDate && format(new Date(v.publishDate), "yyyy-MM-dd") === format(date || new Date(), "yyyy-MM-dd")
+    v.publishDate && format(new Date(v.publishDate), "yyyy-MM-dd") === format(date ?? new Date(), "yyyy-MM-dd")
   )
 
   return (

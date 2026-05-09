@@ -38,7 +38,7 @@ export function PlaceholdersAndVanishInput({
       setCurrentPlaceholder((prev) => (prev + 1) % placeholders.length);
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => { clearInterval(interval); };
   }, [placeholders.length, value, animating]);
 
   const setupCanvas = useCallback(() => {

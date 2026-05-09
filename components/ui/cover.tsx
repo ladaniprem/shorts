@@ -23,8 +23,8 @@ export const Cover = ({
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => { setHovered(true); }}
+      onMouseLeave={() => { setHovered(false); }}
       ref={containerRef}
       className={cn(
         "relative inline-block px-2 py-0.5 transition duration-200 group/cover text-white",
